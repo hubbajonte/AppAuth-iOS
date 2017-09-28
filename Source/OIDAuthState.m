@@ -114,7 +114,8 @@ static const NSUInteger kExpiryTimeTolerance = 60;
                            // code exchange)
                            if (authorizationResponse) {
                              if ([authorizationRequest.responseType
-                                     isEqualToString:OIDResponseTypeCode]) {
+                                  isEqualToString:OIDResponseTypeCode] || [authorizationRequest.responseType
+                                                                           isEqualToString:OIDResponseTypeToken]) {
                                // if the request is for the code flow (NB. not hybrid), assumes the
                                // code is intended for this client, and performs the authorization
                                // code exchange
