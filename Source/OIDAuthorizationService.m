@@ -105,10 +105,19 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (BOOL)resumeAuthorizationFlowWithURL:(NSURL *)URL {
-  // rejects URLs that don't match redirect (these may be completely unrelated to the authorization)
-  if (![self shouldHandleURL:URL]) {
-    return NO;
+   if (@available(iOS 11.0, *)) {
+       NSString *URLString = [URL.absoluteString stringByReplacingOccurrencesOfString:@"#" withString:@"?"];
+       NSURL *modifiedURL = [[NSURL alloc] initWithString:URLString];
+       if (![self shouldHandleURL:modifiedURL]) {
+           return NO;
+       }
+  } else {
+      // rejects URLs that don't match redirect (these may be completely unrelated to the authorization)
+      if (![self shouldHandleURL:URL]) {
+          return NO;
+      }
   }
+
   // checks for an invalid state
   if (!_pendingauthorizationFlowCallback) {
     [NSException raise:OIDOAuthExceptionInvalidAuthorizationFlow
