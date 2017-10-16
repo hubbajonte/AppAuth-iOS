@@ -131,6 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
   }
 
   // verifies that the state in the response matches the state in the request, or both are nil
+    
   if (!OIDIsEqualIncludingNil(_request.state, query.dictionaryValue[kStateParameter])) {
     NSMutableDictionary *userInfo = [query.dictionaryValue mutableCopy];
     userInfo[NSLocalizedDescriptionKey] =
