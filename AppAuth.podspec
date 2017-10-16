@@ -14,6 +14,9 @@ the idiomatic style of the implementation language. In addition to mapping the
 raw protocol flows, convenience methods are available to assist with common
 tasks like performing an action with fresh tokens.
 
+It follows the OAuth 2.0 for Native Apps best current practice
+([RFC 8252](https://tools.ietf.org/html/rfc8252)).
+
                    DESC
 
   s.homepage     = "https://openid.github.io/AppAuth-iOS"
@@ -30,11 +33,6 @@ tasks like performing an action with fresh tokens.
   s.platforms    = { :ios => "7.0", :osx => "10.8", :watchos => "2.0", :tvos => "9.0" }
 
   s.source       = { :git => "https://github.com/openid/AppAuth-iOS.git", :tag => s.version }
-
-  s.pod_target_xcconfig = {
-    # Treat warnings as errors.
-    'GCC_TREAT_WARNINGS_AS_ERRORS' => 'YES',
-  }
 
   s.source_files = "Source/*.{h,m}"
   s.requires_arc = true
