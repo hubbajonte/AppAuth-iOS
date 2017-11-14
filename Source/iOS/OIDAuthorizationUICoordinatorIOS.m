@@ -144,10 +144,11 @@ static id<OIDSafariViewControllerFactory> __nullable gSafariViewControllerFactor
   
   [self cleanUp];
   
-  if (@available(iOS 11.0, *)) {
-    [authenticationVC cancel];
-    if (completion) completion();
-  } else if (@available(iOS 9.0, *)) {
+//  if (@available(iOS 11.0, *)) {
+//    [authenticationVC cancel];
+//    if (completion) completion();
+//  } else
+  if (@available(iOS 9.0, *)) {
     if (safariVC) {
       [safariVC dismissViewControllerAnimated:YES completion:completion];
     } else {
